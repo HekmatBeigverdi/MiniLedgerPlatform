@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card";
 import { ThemeToggle } from "@/components/theme-toggle";
 import React from "react";
+import Link from "next/link";
 
 const features = [
   {
@@ -63,7 +64,9 @@ export default function HomePage() {
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
-                <Button>Start exploring</Button>
+                <Button asChild>
+                  <Link href="/dashboard">Open dashboard</Link>
+                </Button>
                 <Button variant="outline">View roadmap</Button>
               </div>
             </div>
