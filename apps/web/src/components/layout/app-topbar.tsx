@@ -4,6 +4,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { MobileSidebar } from "@/components/layout/mobile-sidebar";
+import { LogoutButton } from "@/features/auth/components/logout-button";
 import React from "react";
 
 export function AppTopbar() {
@@ -32,6 +33,8 @@ export function AppTopbar() {
         </Button>
 
         <ThemeToggle />
+
+        <LogoutButton />
 
         <Avatar className="h-9 w-9">
           <AvatarFallback>ML</AvatarFallback>
