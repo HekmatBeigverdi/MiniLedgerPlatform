@@ -65,7 +65,7 @@ export default function HomePage() {
 
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button asChild>
-                  <Link href="/dashboard">Open dashboard</Link>
+                  <Link href="/login">Sign in to dashboard</Link>
                 </Button>
                 <Button variant="outline">View roadmap</Button>
               </div>
