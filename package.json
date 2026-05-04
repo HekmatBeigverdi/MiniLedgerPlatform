@@ -1,13 +1,15 @@
-
 {
-  "name": "mini-ledger-platform",
+  "name": "miniledgerplatform",
   "private": true,
   "version": "0.0.1",
-  "packageManager": "pnpm@10",
+  "packageManager": "pnpm@10.33.2",
   "scripts": {
     "dev": "turbo run dev",
+    "dev:web": "pnpm --filter @miniledgerplatform/web dev",
     "build": "turbo run build",
+    "build:web": "pnpm --filter @miniledgerplatform/web build",
     "lint": "turbo run lint",
+    "lint:web": "pnpm --filter @miniledgerplatform/web lint",
     "format": "turbo run format"
   },
   "devDependencies": {
