@@ -6,8 +6,8 @@ const voucherLineSchema = z.object({
   partyCode: z.string().optional(),
   partyName: z.string().optional(),
   description: z.string().optional(),
-  debit: z.coerce.number().min(0),
-  credit: z.coerce.number().min(0),
+  debit: z.number().min(0),
+  credit: z.number().min(0),
 });
 
 export const createVoucherSchema = z
