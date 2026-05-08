@@ -24,6 +24,19 @@ Parties module
 ## Phase 7
 Vouchers module
 
+Deliverables:
+- Add vouchers route
+- Add Voucher and VoucherLine domain types
+- Add create voucher validation schema
+- Add balanced debit/credit validation
+- Add mock vouchers service
+- Add voucher totals calculation helper
+- Add dynamic voucher form
+- Add create voucher dialog
+- Add vouchers overview cards
+- Add vouchers table
+- Add client-side voucher creation workflow
+
 ## Phase 8
 Reports module
 
