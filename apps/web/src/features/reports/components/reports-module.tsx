@@ -40,7 +40,7 @@ export function ReportsModule() {
   );
   const [isLoading, setIsLoading] = useState(true);
 
-  async function loadReports() {
+  const loadReports = React.useCallback(async () => {
     setIsLoading(true);
 
     const [summaryData, ledgerData, trialBalanceData] = await Promise.all([
@@ -58,12 +58,37 @@ export function ReportsModule() {
     setLedgerEntries(ledgerData);
     setTrialBalanceRows(trialBalanceData);
     setIsLoading(false);
-  }
+  }, [selectedAccountCode, dateRange]);
 
   useEffect(() => {
-    loadReports();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    let cancelled = false;
+
+    (async () => {
+      setIsLoading(true);
+
+      const [summaryData, ledgerData, trialBalanceData] = await Promise.all([
+        getReportsSummary(dateRange),
+        getLedgerReport({
+          accountCode: selectedAccountCode,
+          dateRange,
+        }),
+        getTrialBalanceReport({
+          dateRange,
+        }),
+      ]);
+
+      if (!cancelled) {
+        setSummary(summaryData);
+        setLedgerEntries(ledgerData);
+        setTrialBalanceRows(trialBalanceData);
+        setIsLoading(false);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [selectedAccountCode, dateRange]);
 
   if (isLoading && !summary) {
     return (
