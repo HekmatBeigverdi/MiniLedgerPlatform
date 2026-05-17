@@ -54,6 +54,17 @@ Deliverables:
 ## Phase 9
 Advanced React and Next.js patterns
 
+Deliverables:
+- Add reusable loading state component
+- Add reusable empty state component
+- Add reusable error state component
+- Add reusable async data hook
+- Add feature-specific data hooks
+- Refactor accounts module
+- Refactor parties module
+- Refactor vouchers module
+- Refactor reports module
+
 ## Phase 10
 Production hardening and documentation
 
