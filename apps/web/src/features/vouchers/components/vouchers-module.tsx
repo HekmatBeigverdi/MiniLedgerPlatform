@@ -1,56 +1,53 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { FileSpreadsheet } from "lucide-react";
 
 import { CreateVoucherDialog } from "@/features/vouchers/components/create-voucher-dialog";
 import { VouchersOverviewCards } from "@/features/vouchers/components/vouchers-overview-cards";
 import { VouchersTable } from "@/features/vouchers/components/vouchers-table";
-import { getVouchers } from "@/features/vouchers/services/vouchers-service";
+import { useVouchers } from "@/features/vouchers/services/use-vouchers";
 import type { Voucher } from "@/features/vouchers/types/voucher";
+import { EmptyState } from "@/components/shared/empty-state";
+import { ErrorState } from "@/components/shared/error-state";
+import { PageLoadingState } from "@/components/shared/page-loading-state";
 import { Button } from "@/components/ui/button";
 import React from "react";
 
 export function VouchersModule() {
-  const [vouchers, setVouchers] = useState<Voucher[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    let isMounted = true;
-
-    async function loadVouchers() {
-      const data = await getVouchers();
-
-      if (isMounted) {
-        setVouchers(data);
-        setIsLoading(false);
-      }
-    }
-
-    loadVouchers();
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
+  const {
+    data: vouchers,
+    setData: setVouchers,
+    isLoading,
+    error,
+    reload,
+  } = useVouchers();
 
   function handleVoucherCreated(voucher: Voucher) {
     setVouchers((current) => [voucher, ...current]);
   }
 
   if (isLoading) {
-    return (
-      <div className="space-y-6">
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {Array.from({ length: 4 }).map((_, index) => (
-            <div
-              key={index}
-              className="h-32 animate-pulse rounded-lg border bg-muted"
-            />
-          ))}
-        </div>
+    return <PageLoadingState />;
+  }
 
-        <div className="h-96 animate-pulse rounded-lg border bg-muted" />
-      </div>
+  if (error) {
+    return (
+      <ErrorState
+        title="Vouchers could not be loaded"
+        description={error.message}
+        onRetry={reload}
+      />
+    );
+  }
+
+  if (vouchers.length === 0) {
+    return (
+      <EmptyState
+        title="No vouchers found"
+        description="Create your first balanced voucher to start recording accounting transactions."
+        icon={<FileSpreadsheet className="h-10 w-10" />}
+        action={<CreateVoucherDialog onVoucherCreated={handleVoucherCreated} />}
+      />
     );
   }
 
