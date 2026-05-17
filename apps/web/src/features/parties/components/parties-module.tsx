@@ -1,56 +1,53 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Users } from "lucide-react";
 
 import { CreatePartyDialog } from "@/features/parties/components/create-party-dialog";
 import { PartiesOverviewCards } from "@/features/parties/components/parties-overview-cards";
 import { PartiesTable } from "@/features/parties/components/parties-table";
-import { getParties } from "@/features/parties/services/parties-service";
+import { useParties } from "@/features/parties/services/use-parties";
 import type { Party } from "@/features/parties/types/party";
+import { EmptyState } from "@/components/shared/empty-state";
+import { ErrorState } from "@/components/shared/error-state";
+import { PageLoadingState } from "@/components/shared/page-loading-state";
 import { Button } from "@/components/ui/button";
 import React from "react";
 
 export function PartiesModule() {
-  const [parties, setParties] = useState<Party[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    let isMounted = true;
-
-    async function loadParties() {
-      const data = await getParties();
-
-      if (isMounted) {
-        setParties(data);
-        setIsLoading(false);
-      }
-    }
-
-    loadParties();
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
+  const {
+    data: parties,
+    setData: setParties,
+    isLoading,
+    error,
+    reload,
+  } = useParties();
 
   function handlePartyCreated(party: Party) {
     setParties((current) => [party, ...current]);
   }
 
   if (isLoading) {
-    return (
-      <div className="space-y-6">
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {Array.from({ length: 4 }).map((_, index) => (
-            <div
-              key={index}
-              className="h-32 animate-pulse rounded-lg border bg-muted"
-            />
-          ))}
-        </div>
+    return <PageLoadingState />;
+  }
 
-        <div className="h-96 animate-pulse rounded-lg border bg-muted" />
-      </div>
+  if (error) {
+    return (
+      <ErrorState
+        title="Parties could not be loaded"
+        description={error.message}
+        onRetry={reload}
+      />
+    );
+  }
+
+  if (parties.length === 0) {
+    return (
+      <EmptyState
+        title="No parties found"
+        description="Create your first party to start managing customers, vendors, and other entities."
+        icon={<Users className="h-10 w-10" />}
+        action={<CreatePartyDialog onPartyCreated={handlePartyCreated} />}
+      />
     );
   }
 
