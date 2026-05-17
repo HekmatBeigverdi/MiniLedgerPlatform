@@ -1,22 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { BarChart3 } from "lucide-react";
 
 import { LedgerReportTable } from "@/features/reports/components/ledger-report-table";
 import { ReportsFilterBar } from "@/features/reports/components/reports-filter-bar";
 import { ReportsSummaryCards } from "@/features/reports/components/reports-summary-cards";
 import { TrialBalanceTable } from "@/features/reports/components/trial-balance-table";
-import {
-  getLedgerReport,
-  getReportsSummary,
-  getTrialBalanceReport,
-} from "@/features/reports/services/reports-service";
-import type {
-  LedgerEntry,
-  ReportDateRange,
-  ReportsSummary,
-  TrialBalanceRow,
-} from "@/features/reports/types/report";
+import { useReports } from "@/features/reports/services/use-reports";
+import { EmptyState } from "@/components/shared/empty-state";
+import { ErrorState } from "@/components/shared/error-state";
+import { PageLoadingState } from "@/components/shared/page-loading-state";
 import {
   Card,
   CardContent,
@@ -27,85 +20,38 @@ import {
 import React from "react";
 
 export function ReportsModule() {
-  const [selectedAccountCode, setSelectedAccountCode] = useState("1000");
-  const [dateRange, setDateRange] = useState<ReportDateRange>({
-    from: "2026-02-01",
-    to: "2026-02-28",
-  });
+  const {
+    selectedAccountCode,
+    setSelectedAccountCode,
+    dateRange,
+    setDateRange,
+    data,
+    isLoading,
+    error,
+    reload,
+  } = useReports();
 
-  const [summary, setSummary] = useState<ReportsSummary | null>(null);
-  const [ledgerEntries, setLedgerEntries] = useState<LedgerEntry[]>([]);
-  const [trialBalanceRows, setTrialBalanceRows] = useState<TrialBalanceRow[]>(
-    []
-  );
-  const [isLoading, setIsLoading] = useState(true);
+  if (isLoading && !data.summary) {
+    return <PageLoadingState />;
+  }
 
-  const loadReports = React.useCallback(async () => {
-    setIsLoading(true);
-
-    const [summaryData, ledgerData, trialBalanceData] = await Promise.all([
-      getReportsSummary(dateRange),
-      getLedgerReport({
-        accountCode: selectedAccountCode,
-        dateRange,
-      }),
-      getTrialBalanceReport({
-        dateRange,
-      }),
-    ]);
-
-    setSummary(summaryData);
-    setLedgerEntries(ledgerData);
-    setTrialBalanceRows(trialBalanceData);
-    setIsLoading(false);
-  }, [selectedAccountCode, dateRange]);
-
-  useEffect(() => {
-    let cancelled = false;
-
-    (async () => {
-      setIsLoading(true);
-
-      const [summaryData, ledgerData, trialBalanceData] = await Promise.all([
-        getReportsSummary(dateRange),
-        getLedgerReport({
-          accountCode: selectedAccountCode,
-          dateRange,
-        }),
-        getTrialBalanceReport({
-          dateRange,
-        }),
-      ]);
-
-      if (!cancelled) {
-        setSummary(summaryData);
-        setLedgerEntries(ledgerData);
-        setTrialBalanceRows(trialBalanceData);
-        setIsLoading(false);
-      }
-    })();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [selectedAccountCode, dateRange]);
-
-  if (isLoading && !summary) {
+  if (error) {
     return (
-      <div className="space-y-6">
-        <div className="h-28 animate-pulse rounded-lg border bg-muted" />
+      <ErrorState
+        title="Reports could not be loaded"
+        description={error.message}
+        onRetry={reload}
+      />
+    );
+  }
 
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {Array.from({ length: 4 }).map((_, index) => (
-            <div
-              key={index}
-              className="h-32 animate-pulse rounded-lg border bg-muted"
-            />
-          ))}
-        </div>
-
-        <div className="h-96 animate-pulse rounded-lg border bg-muted" />
-      </div>
+  if (!data.summary) {
+    return (
+      <EmptyState
+        title="No reports available"
+        description="Reports will appear after accounting data is available."
+        icon={<BarChart3 className="h-10 w-10" />}
+      />
     );
   }
 
@@ -116,10 +62,10 @@ export function ReportsModule() {
         dateRange={dateRange}
         onAccountChange={setSelectedAccountCode}
         onDateRangeChange={setDateRange}
-        onRefresh={loadReports}
+        onRefresh={reload}
       />
 
-      {summary ? <ReportsSummaryCards summary={summary} /> : null}
+      <ReportsSummaryCards summary={data.summary} />
 
       <div className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
         <Card>
@@ -131,7 +77,7 @@ export function ReportsModule() {
           </CardHeader>
 
           <CardContent>
-            <LedgerReportTable entries={ledgerEntries} />
+            <LedgerReportTable entries={data.ledgerEntries} />
           </CardContent>
         </Card>
 
@@ -144,7 +90,7 @@ export function ReportsModule() {
           </CardHeader>
 
           <CardContent>
-            <TrialBalanceTable rows={trialBalanceRows} />
+            <TrialBalanceTable rows={data.trialBalanceRows} />
           </CardContent>
         </Card>
       </div>
