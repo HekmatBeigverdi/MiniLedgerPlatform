@@ -1,56 +1,53 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { BookOpen } from "lucide-react";
 
 import { AccountsOverviewCards } from "@/features/accounts/components/accounts-overview-cards";
 import { AccountsTable } from "@/features/accounts/components/accounts-table";
 import { CreateAccountDialog } from "@/features/accounts/components/create-account-dialog";
-import { getAccounts } from "@/features/accounts/services/accounts-service";
+import { useAccounts } from "@/features/accounts/services/use-accounts";
 import type { Account } from "@/features/accounts/types/account";
 import { Button } from "@/components/ui/button";
+import { EmptyState } from "@/components/shared/empty-state";
+import { ErrorState } from "@/components/shared/error-state";
+import { PageLoadingState } from "@/components/shared/page-loading-state";
 import React from "react";
 
 export function AccountsModule() {
-  const [accounts, setAccounts] = useState<Account[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    let isMounted = true;
-
-    async function loadAccounts() {
-      const data = await getAccounts();
-
-      if (isMounted) {
-        setAccounts(data);
-        setIsLoading(false);
-      }
-    }
-
-    loadAccounts();
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
+  const {
+    data: accounts,
+    setData: setAccounts,
+    isLoading,
+    error,
+    reload,
+  } = useAccounts();
 
   function handleAccountCreated(account: Account) {
     setAccounts((current) => [account, ...current]);
   }
 
   if (isLoading) {
-    return (
-      <div className="space-y-6">
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {Array.from({ length: 4 }).map((_, index) => (
-            <div
-              key={index}
-              className="h-32 animate-pulse rounded-lg border bg-muted"
-            />
-          ))}
-        </div>
+    return <PageLoadingState />;
+  }
 
-        <div className="h-96 animate-pulse rounded-lg border bg-muted" />
-      </div>
+  if (error) {
+    return (
+      <ErrorState
+        title="Accounts could not be loaded"
+        description={error.message}
+        onRetry={reload}
+      />
+    );
+  }
+
+  if (accounts.length === 0) {
+    return (
+      <EmptyState
+        title="No accounts found"
+        description="Create your first account to start building the chart of accounts."
+        icon={<BookOpen className="h-10 w-10" />}
+        action={<CreateAccountDialog onAccountCreated={handleAccountCreated} />}
+      />
     );
   }
 
