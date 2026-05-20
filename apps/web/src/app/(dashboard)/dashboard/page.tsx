@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import React from "react";
+import type { Metadata } from "next";
 
 const summaryCards = [
   {
@@ -55,6 +56,11 @@ const recentActivities = [
     status: "Updated",
   },
 ];
+
+export const metadata: Metadata = {
+  title: "Dashboard",
+  description: "Overview of accounting activity and operational status.",
+};
 
 export default function DashboardPage() {
   return (

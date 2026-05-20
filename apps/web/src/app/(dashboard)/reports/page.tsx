@@ -1,6 +1,12 @@
 import { PageHeader } from "@/components/layout/page-header";
 import { ReportsModule } from "@/features/reports/components/reports-module";
 import React from "react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Reports",
+  description: "Review ledger movements, trial balance, and reporting summaries.",
+};
 
 export default function ReportsPage() {
   return (

@@ -1,6 +1,12 @@
 import { PageHeader } from "@/components/layout/page-header";
 import { AccountsModule } from "@/features/accounts/components/accounts-module";
 import React from "react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Accounts",
+  description: "Manage the chart of accounts.",
+};
 
 export default function AccountsPage() {
   return (
