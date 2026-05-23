@@ -9,6 +9,12 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import React from "react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Login",
+  description: "Sign in to MiniLedgerPlatform.",
+};
 
 export default function LoginPage() {
   return (

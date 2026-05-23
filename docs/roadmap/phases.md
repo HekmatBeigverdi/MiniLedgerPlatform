@@ -40,11 +40,35 @@ Deliverables:
 ## Phase 8
 Reports module
 
+Deliverables:
+- Add reports route
+- Add report domain types
+- Add mock reports data
+- Add mock reports service
+- Add reports summary cards
+- Add ledger report table
+- Add trial balance table
+- Add reports filter bar
+- Add reports module container
+
 ## Phase 9
-Advanced React and Next.js patterns
+Advanced React and Next.js patterns | Completed |
 
 ## Phase 10
 Production hardening and documentation
+
+Deliverables:
+- Add environment example file
+- Add central app configuration
+- Improve root metadata
+- Add root loading page
+- Add custom not found page
+- Add root error boundary
+- Add dashboard route loading state
+- Add dashboard route error boundary
+- Add route metadata
+- Add validation checklist
+- Update README
 
 ## Phase 11
 Desktop edition with Tauri and SQLite

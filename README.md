@@ -55,9 +55,7 @@ MiniLedgerPlatform/
 
 ### Current Phase
 
-```txt
-Phase 6 — Parties Module
-```
+Phase 10 — Production Hardening and Documentation
 
 The project currently includes:
 

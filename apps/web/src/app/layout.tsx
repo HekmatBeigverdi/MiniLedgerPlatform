@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+
 import { ThemeProvider } from "@/components/providers/theme-provider";
+import { appConfig } from "@/config/app";
 import "./globals.css";
-import React from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,9 +16,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MiniLedgerPlatform",
-  description:
-    "A web-first and desktop-ready accounting platform built with Next.js.",
+  title: {
+    default: appConfig.name,
+    template: `%s | ${appConfig.name}`,
+  },
+  description: appConfig.description,
+  applicationName: appConfig.name,
+  metadataBase: new URL(appConfig.url),
 };
 
 export default function RootLayout({
