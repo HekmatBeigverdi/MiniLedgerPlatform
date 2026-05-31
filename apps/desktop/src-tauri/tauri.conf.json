@@ -4,10 +4,10 @@
   "version": "0.1.0",
   "identifier": "com.greedydev.desktop-temp",
   "build": {
-    "beforeDevCommand": "pnpm --dir ../web dev",
+    "beforeDevCommand": "pnpm --dir ../../web dev",
     "devUrl": "http://localhost:3000",
-    "beforeBuildCommand": "pnpm --dir ../web build:desktop",
-    "frontendDist": "../web/out"
+    "beforeBuildCommand": "",
+    "frontendDist": "../../web/out"
   },
   "app": {
     "withGlobalTauri": true,
