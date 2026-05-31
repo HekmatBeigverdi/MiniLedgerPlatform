@@ -8,7 +8,7 @@
     },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**", "build/**"]
+      "outputs": ["dist/**", ".next/**", "build/**", "out/**", "src-tauri/target/**"]
     },
     "lint": {
       "dependsOn": ["^lint"]
