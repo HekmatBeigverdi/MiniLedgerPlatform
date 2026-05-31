@@ -1,7 +1,12 @@
 import type { NextConfig } from "next";
 
+const isDesktopBuild = process.env.NEXT_PUBLIC_APP_MODE === "desktop";
+
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: isDesktopBuild ? "export" : undefined,
+  images: {
+    unoptimized: isDesktopBuild,
+  },
 };
 
 export default nextConfig;

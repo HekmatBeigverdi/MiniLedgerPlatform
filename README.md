@@ -55,7 +55,7 @@ MiniLedgerPlatform/
 
 ### Current Phase
 
-Phase 10 — Production Hardening and Documentation
+Phase 11 — Desktop Foundation with Tauri and SQLite Planning
 
 The project currently includes:
 
@@ -209,44 +209,14 @@ features/settings
 
 ## Getting Started
 
-### 1. Clone the repository
+### Run desktop app
 
 ```bash
-git clone https://github.com/your-username/MiniLedgerPlatform.git
-cd MiniLedgerPlatform
-```
+pnpm dev:desktop
 
-### 2. Install dependencies
+pnpm build:desktop
 
-```bash
-pnpm install
-```
-
-### 3. Run the web application
-
-```bash
-pnpm dev:web
-```
-
-Open:
-
-```txt
-http://localhost:3000
-```
-
-### 4. Run lint
-
-```bash
-pnpm lint:web
-```
-
-### 5. Build the web application
-
-```bash
-pnpm build:web
-```
-
----
+pnpm build:web:desktop
 
 ## Root Scripts
 

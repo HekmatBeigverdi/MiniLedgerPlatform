@@ -82,4 +82,14 @@ Deliverables:
 - Update README
 
 ## Phase 11
-Desktop edition with Tauri and SQLite
+Desktop edition with Tauri and SQLite planning
+
+Deliverables:
+- Add desktop build mode for the web app
+- Add Next.js static export support for desktop packaging
+- Add desktop environment example
+- Add root desktop scripts
+- Initialize Tauri desktop app
+- Connect Tauri to the web app output
+- Add runtime mode helpers
+- Document desktop SQLite strategy

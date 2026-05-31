@@ -10,7 +10,10 @@
     "build:web": "pnpm --filter @miniledgerplatform/web build",
     "lint": "turbo run lint",
     "lint:web": "pnpm --filter @miniledgerplatform/web lint",
-    "format": "turbo run format"
+    "format": "turbo run format",
+    "build:web:desktop": "pnpm --filter @miniledgerplatform/web build:desktop",
+    "dev:desktop": "pnpm --filter @miniledgerplatform/desktop dev",
+    "build:desktop": "pnpm --filter @miniledgerplatform/desktop build"
   },
   "devDependencies": {
     "turbo": "^2.5.0"
