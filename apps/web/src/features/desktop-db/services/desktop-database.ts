@@ -52,7 +52,7 @@ export async function getDesktopDatabaseHealth(): Promise<DesktopDatabaseHealth>
     const db = await getDesktopDatabase();
 
     const rows = await db.select<Array<{ value: string }>>(
-      "SELECT value FROM app_settings WHERE key = $1",
+      "SELECT value FROM app_settings WHERE key = ?",
       ["schema_version"]
     );
 
@@ -63,14 +63,27 @@ export async function getDesktopDatabaseHealth(): Promise<DesktopDatabaseHealth>
       message: "SQLite database is connected and initialized.",
     };
   } catch (error) {
+    console.error("Desktop database health check failed:", error);
+
+    let message = "Unknown desktop database error.";
+
+    if (error instanceof Error) {
+      message = error.message;
+    } else if (typeof error === "string") {
+      message = error;
+    } else {
+      try {
+        message = JSON.stringify(error);
+      } catch {
+        message = String(error);
+      }
+    }
+
     return {
       isDesktop: true,
       connected: false,
       schemaVersion: null,
-      message:
-        error instanceof Error
-          ? error.message
-          : "Unknown desktop database error.",
+      message,
     };
   }
 }
