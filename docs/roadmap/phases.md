@@ -93,3 +93,17 @@ Deliverables:
 - Connect Tauri to the web app output
 - Add runtime mode helpers
 - Document desktop SQLite strategy
+  
+## Phase 12
+SQLite persistence foundation
+
+Deliverables:
+- Add Tauri SQL plugin
+- Enable SQLite support
+- Register SQL plugin in Tauri
+- Enable SQL plugin permissions
+- Add initial SQLite schema
+- Add frontend desktop database service
+- Add desktop database health check
+- Add `/desktop-database` diagnostics page
+- Update SQLite strategy documentation

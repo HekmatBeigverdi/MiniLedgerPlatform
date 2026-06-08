@@ -1,19 +1,19 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "desktop-temp",
+  "productName": "MiniLedgerPlatform",
+  "identifier": "com.greedydev.miniledgerplatform",
   "version": "0.1.0",
-  "identifier": "com.greedydev.desktop-temp",
   "build": {
-    "beforeDevCommand": "pnpm --dir ../../web dev",
+    "beforeDevCommand": "pnpm --dir ../web dev:desktop",
     "devUrl": "http://localhost:3000",
     "beforeBuildCommand": "",
-    "frontendDist": "../../web/out"
+    "frontendDist": "../web/out"
   },
   "app": {
     "withGlobalTauri": true,
     "windows": [
       {
-        "title": "desktop-temp",
+        "title": "MiniLedgerPlatform",
         "width": 800,
         "height": 600
       }

@@ -55,7 +55,7 @@ MiniLedgerPlatform/
 
 ### Current Phase
 
-Phase 11 — Desktop Foundation with Tauri and SQLite Planning
+Phase 12 — SQLite Persistence Foundation
 
 The project currently includes:
 
@@ -78,6 +78,9 @@ The project currently includes:
 ---
 
 ## Tech Stack
+
+- Tauri SQL Plugin
+- SQLite local database foundation
 
 ### Web Application
 
