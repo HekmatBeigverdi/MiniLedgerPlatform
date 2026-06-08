@@ -32,3 +32,22 @@ parties
 vouchers
 voucher_lines
 app_settings
+
+## Phase 12 Implementation
+
+Phase 12 introduces the first SQLite persistence foundation:
+
+- Tauri SQL plugin is installed
+- SQLite feature is enabled on the Rust side
+- SQL plugin permission is enabled through Tauri capabilities
+- Initial SQLite schema is defined
+- Frontend desktop database service is added
+- Desktop database health check is added
+- `/desktop-database` diagnostics page is added
+
+## Current Database File
+
+The current local database file is:
+
+```txt
+miniledger.db
