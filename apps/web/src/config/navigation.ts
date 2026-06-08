@@ -6,6 +6,7 @@ import {
   LayoutDashboard,
   Settings,
   Users,
+  Database,
 } from "lucide-react";
 
 export type NavigationItem = {
@@ -51,6 +52,12 @@ export const mainNavigation: NavigationItem[] = [
     href: "/organization",
     icon: Building2,
     description: "Company and workspace information",
+  },
+  {
+    title: "Desktop DB",
+    href: "/desktop-database",
+    icon: Database,
+    description: "Local SQLite database diagnostics",
   },
   {
     title: "Settings",
