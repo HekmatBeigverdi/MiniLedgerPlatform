@@ -9,7 +9,7 @@ import {
   createAccountSchema,
   type CreateAccountFormValues,
 } from "@/features/accounts/schemas/account-schema";
-import { createAccount } from "@/features/accounts/services/accounts-service";
+import { getAccountsProvider } from "@/features/accounts/services/accounts-provider-resolver";
 import type { Account } from "@/features/accounts/types/account";
 import { Button } from "@/components/ui/button";
 import {
@@ -64,8 +64,7 @@ export function CreateAccountDialog({
   const isSubmitting = form.formState.isSubmitting;
 
   async function onSubmit(values: CreateAccountFormValues) {
-    const createdAccount = await createAccount(values);
-
+    const createdAccount = await getAccountsProvider().createAccount(values);
     onAccountCreated(createdAccount);
     form.reset();
     setOpen(false);
