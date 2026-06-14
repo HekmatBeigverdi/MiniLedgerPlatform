@@ -55,25 +55,14 @@ MiniLedgerPlatform/
 
 ### Current Phase
 
-Phase 12 — SQLite Persistence Foundation
+Phase 13 — Desktop Accounts Data Provider
 
 The project currently includes:
 
-- Monorepo foundation
-- Next.js web application
-- Tailwind CSS setup
-- shadcn/ui design system foundation
-- Light/Dark theme support
-- Dashboard shell
-- Sidebar navigation
-- Responsive mobile navigation
-- Authentication foundation
-- Login page with mock login flow
-- React Hook Form integration
-- Zod validation
-- Accounts module
-- Parties module
-- Phase-based documentation
+- Desktop SQLite provider for Accounts
+- SQLite-backed account creation in desktop mode
+- Initial desktop account seeding
+- Runtime-based accounts provider selection
 
 ---
 
@@ -276,6 +265,7 @@ The mock session is stored temporarily in browser local storage.
 | Phase 9 | Advanced React and Next.js patterns | Planned |
 | Phase 10 | Production hardening and documentation | Planned |
 | Phase 11 | Desktop edition with Tauri and SQLite | Planned |
+| Phase 13 | Desktop accounts data provider | Completed |
 
 Detailed roadmap:
 
