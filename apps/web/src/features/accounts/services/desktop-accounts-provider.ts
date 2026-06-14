@@ -1,6 +1,7 @@
 import { runInitialDesktopMigrations, getDesktopDatabase } from "@/features/desktop-db/services/desktop-database";
 import type { CreateAccountFormValues } from "@/features/accounts/schemas/account-schema";
 import type { AccountsProvider } from "@/features/accounts/services/accounts-provider";
+import { seedDesktopAccountsIfEmpty } from "@/features/accounts/services/desktop-accounts-seed";
 import {
   mapSqliteAccountToAccount,
   type SqliteAccountRow,
@@ -10,6 +11,7 @@ import type { Account } from "@/features/accounts/types/account";
 export const desktopAccountsProvider: AccountsProvider = {
   async getAccounts() {
     await runInitialDesktopMigrations();
+    await seedDesktopAccountsIfEmpty();
 
     const db = await getDesktopDatabase();
 
