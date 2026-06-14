@@ -107,3 +107,16 @@ Deliverables:
 - Add desktop database health check
 - Add `/desktop-database` diagnostics page
 - Update SQLite strategy documentation
+  
+## Phase 13
+Desktop accounts data provider
+
+Deliverables:
+- Add accounts provider contract
+- Add mock accounts provider
+- Add desktop SQLite accounts provider
+- Add SQLite account mapper
+- Add runtime-based accounts provider resolver
+- Add initial desktop accounts seed
+- Refactor accounts loading to use provider resolver
+- Refactor account creation to use provider resolver
