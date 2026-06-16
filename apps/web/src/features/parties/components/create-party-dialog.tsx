@@ -9,7 +9,7 @@ import {
   createPartySchema,
   type CreatePartyFormValues,
 } from "@/features/parties/schemas/party-schema";
-import { createParty } from "@/features/parties/services/parties-service";
+import { getPartiesProvider } from "@/features/parties/services/parties-provider-resolver";
 import type { Party } from "@/features/parties/types/party";
 import { Button } from "@/components/ui/button";
 import {
@@ -64,7 +64,7 @@ export function CreatePartyDialog({ onPartyCreated }: CreatePartyDialogProps) {
   const isSubmitting = form.formState.isSubmitting;
 
   async function onSubmit(values: CreatePartyFormValues) {
-    const createdParty = await createParty(values);
+    const createdParty = await getPartiesProvider().createParty(values);
 
     onPartyCreated(createdParty);
     form.reset();
