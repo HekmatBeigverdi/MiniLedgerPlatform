@@ -120,3 +120,16 @@ Deliverables:
 - Add initial desktop accounts seed
 - Refactor accounts loading to use provider resolver
 - Refactor account creation to use provider resolver
+
+## Phase 14
+Desktop parties data provider
+
+Deliverables:
+- Add parties provider contract
+- Add mock parties provider
+- Add desktop SQLite parties provider
+- Add SQLite party mapper
+- Add runtime-based parties provider resolver
+- Add initial desktop parties seed
+- Refactor parties loading to use provider resolver
+- Refactor party creation to use provider resolver
