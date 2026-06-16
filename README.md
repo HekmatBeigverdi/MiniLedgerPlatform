@@ -55,14 +55,14 @@ MiniLedgerPlatform/
 
 ### Current Phase
 
-Phase 13 — Desktop Accounts Data Provider
+Phase 14 — Desktop Parties Data Provider
 
 The project currently includes:
 
-- Desktop SQLite provider for Accounts
-- SQLite-backed account creation in desktop mode
-- Initial desktop account seeding
-- Runtime-based accounts provider selection
+- Desktop SQLite provider for Parties
+- SQLite-backed party creation in desktop mode
+- Initial desktop party seeding
+- Runtime-based parties provider selection
 
 ---
 
@@ -266,6 +266,7 @@ The mock session is stored temporarily in browser local storage.
 | Phase 10 | Production hardening and documentation | Planned |
 | Phase 11 | Desktop edition with Tauri and SQLite | Planned |
 | Phase 13 | Desktop accounts data provider | Completed |
+| Phase 14 | Desktop parties data provider | Completed |
 
 Detailed roadmap:
 
