@@ -11,7 +11,7 @@ import {
   type CreateVoucherFormValues,
 } from "@/features/vouchers/schemas/voucher-schema";
 import { calculateVoucherTotals } from "@/features/vouchers/services/voucher-calculations";
-import { createVoucher } from "@/features/vouchers/services/vouchers-service";
+import { getVouchersProvider } from "@/features/vouchers/services/vouchers-provider-resolver";
 import type { Voucher } from "@/features/vouchers/types/voucher";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -103,7 +103,7 @@ export function CreateVoucherForm({
   }
 
   async function onSubmit(values: CreateVoucherFormValues) {
-    const createdVoucher = await createVoucher(values);
+    const createdVoucher = await getVouchersProvider().createVoucher(values);
 
     onVoucherCreated(createdVoucher);
     form.reset();
