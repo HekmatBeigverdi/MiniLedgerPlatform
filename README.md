@@ -55,14 +55,14 @@ MiniLedgerPlatform/
 
 ### Current Phase
 
-Phase 14 — Desktop Parties Data Provider
+Phase 15 — Desktop Vouchers Data Provider
 
 The project currently includes:
 
-- Desktop SQLite provider for Parties
-- SQLite-backed party creation in desktop mode
-- Initial desktop party seeding
-- Runtime-based parties provider selection
+- Desktop SQLite provider for Vouchers
+- SQLite-backed voucher and voucher line creation
+- Initial desktop voucher seeding
+- Runtime-based vouchers provider selection
 
 ---
 
@@ -267,6 +267,7 @@ The mock session is stored temporarily in browser local storage.
 | Phase 11 | Desktop edition with Tauri and SQLite | Planned |
 | Phase 13 | Desktop accounts data provider | Completed |
 | Phase 14 | Desktop parties data provider | Completed |
+| Phase 15 | Desktop vouchers data provider | Completed |
 
 Detailed roadmap:
 
