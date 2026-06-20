@@ -133,3 +133,16 @@ Deliverables:
 - Add initial desktop parties seed
 - Refactor parties loading to use provider resolver
 - Refactor party creation to use provider resolver
+
+## Phase 15
+Desktop vouchers data provider
+
+Deliverables:
+- Add vouchers provider contract
+- Add mock vouchers provider
+- Add desktop SQLite vouchers provider
+- Add SQLite voucher and voucher line mappers
+- Add runtime-based vouchers provider resolver
+- Add initial desktop vouchers seed
+- Refactor voucher loading to use provider resolver
+- Refactor voucher creation to use provider resolver
