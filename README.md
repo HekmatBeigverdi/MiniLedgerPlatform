@@ -55,14 +55,15 @@ MiniLedgerPlatform/
 
 ### Current Phase
 
-Phase 15 — Desktop Vouchers Data Provider
+Phase 16 — Desktop Reports from SQLite
 
 The project currently includes:
 
-- Desktop SQLite provider for Vouchers
-- SQLite-backed voucher and voucher line creation
-- Initial desktop voucher seeding
-- Runtime-based vouchers provider selection
+- Desktop SQLite provider for Reports
+- SQLite-generated ledger reports
+- SQLite-generated trial balance reports
+- SQLite-generated report summaries
+- Runtime-based reports provider selection
 
 ---
 
@@ -268,6 +269,7 @@ The mock session is stored temporarily in browser local storage.
 | Phase 13 | Desktop accounts data provider | Completed |
 | Phase 14 | Desktop parties data provider | Completed |
 | Phase 15 | Desktop vouchers data provider | Completed |
+| Phase 16 | Desktop reports from SQLite | Completed |
 
 Detailed roadmap:
 
