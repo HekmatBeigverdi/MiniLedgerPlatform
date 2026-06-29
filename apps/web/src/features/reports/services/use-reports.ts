@@ -2,11 +2,7 @@
 
 import { useCallback, useState } from "react";
 
-import {
-  getLedgerReport,
-  getReportsSummary,
-  getTrialBalanceReport,
-} from "@/features/reports/services/reports-service";
+import { getReportsProvider } from "@/features/reports/services/reports-provider-resolver";
 import type {
   LedgerEntry,
   ReportDateRange,
@@ -25,17 +21,19 @@ export function useReports() {
   const [selectedAccountCode, setSelectedAccountCode] = useState("1000");
   const [dateRange, setDateRange] = useState<ReportDateRange>({
     from: "2026-02-01",
-    to: "2026-02-28",
+    to: "2026-12-31",
   });
 
   const loadReports = useCallback(async (): Promise<ReportsData> => {
+    const provider = getReportsProvider();
+
     const [summary, ledgerEntries, trialBalanceRows] = await Promise.all([
-      getReportsSummary(dateRange),
-      getLedgerReport({
+      provider.getReportsSummary(dateRange),
+      provider.getLedgerReport({
         accountCode: selectedAccountCode,
         dateRange,
       }),
-      getTrialBalanceReport({
+      provider.getTrialBalanceReport({
         dateRange,
       }),
     ]);
