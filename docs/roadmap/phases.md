@@ -146,3 +146,18 @@ Deliverables:
 - Add initial desktop vouchers seed
 - Refactor voucher loading to use provider resolver
 - Refactor voucher creation to use provider resolver
+
+
+## Phase 16
+Desktop reports from SQLite
+
+Deliverables:
+- Add reports provider contract
+- Add mock reports provider
+- Add desktop SQLite reports provider
+- Add SQLite report mappers
+- Add runtime-based reports provider resolver
+- Refactor reports loading to use provider resolver
+- Generate ledger report from SQLite
+- Generate trial balance from SQLite
+- Generate reports summary from SQLite
