@@ -120,13 +120,21 @@ export const desktopReportsProvider: ReportsProvider = {
         a.code as account_code,
         a.name as account_name,
         a.type as account_type,
-        COALESCE(SUM(vl.debit), 0) as debit,
-        COALESCE(SUM(vl.credit), 0) as credit
+        COALESCE(SUM(
+          CASE
+            WHEN v.date >= ? AND v.date <= ? THEN vl.debit
+            ELSE 0
+          END
+        ), 0) as debit,
+        COALESCE(SUM(
+          CASE
+            WHEN v.date >= ? AND v.date <= ? THEN vl.credit
+            ELSE 0
+          END
+        ), 0) as credit
       FROM accounts a
       LEFT JOIN voucher_lines vl ON vl.account_code = a.code
       LEFT JOIN vouchers v ON v.id = vl.voucher_id
-        AND v.date >= ?
-        AND v.date <= ?
       GROUP BY
         a.id,
         a.code,
@@ -134,7 +142,7 @@ export const desktopReportsProvider: ReportsProvider = {
         a.type
       HAVING debit > 0 OR credit > 0
       ORDER BY a.code ASC`,
-      [range.from, range.to]
+      [range.from, range.to, range.from, range.to]
     );
 
     return rows.map(mapSqliteTrialBalanceRowToTrialBalanceRow);
