@@ -55,15 +55,14 @@ MiniLedgerPlatform/
 
 ### Current Phase
 
-Phase 16 — Desktop Reports from SQLite
+Phase 17 — Report Export and Print Foundation
 
 The project currently includes:
 
-- Desktop SQLite provider for Reports
-- SQLite-generated ledger reports
-- SQLite-generated trial balance reports
-- SQLite-generated report summaries
-- Runtime-based reports provider selection
+- CSV export for ledger reports
+- CSV export for trial balance reports
+- Print-friendly reports
+- Report export toolbar
 
 ---
 
@@ -270,6 +269,7 @@ The mock session is stored temporarily in browser local storage.
 | Phase 14 | Desktop parties data provider | Completed |
 | Phase 15 | Desktop vouchers data provider | Completed |
 | Phase 16 | Desktop reports from SQLite | Completed |
+| Phase 17 | Report export and print foundation | Completed |
 
 Detailed roadmap:
 
