@@ -161,3 +161,16 @@ Deliverables:
 - Generate ledger report from SQLite
 - Generate trial balance from SQLite
 - Generate reports summary from SQLite
+
+## Phase 17
+Report export and print foundation
+
+Deliverables:
+- Add generic CSV export utility
+- Add ledger report CSV export
+- Add trial balance CSV export
+- Add reports toolbar
+- Add print action
+- Add print-specific styles
+- Add printable report heading
+
