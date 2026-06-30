@@ -10,6 +10,7 @@ import { useReports } from "@/features/reports/services/use-reports";
 import { EmptyState } from "@/components/shared/empty-state";
 import { ErrorState } from "@/components/shared/error-state";
 import { PageLoadingState } from "@/components/shared/page-loading-state";
+import { ReportsToolbar } from "@/features/reports/components/reports-toolbar";
 import {
   Card,
   CardContent,
@@ -67,32 +68,13 @@ export function ReportsModule() {
 
       <ReportsSummaryCards summary={data.summary} />
 
+      <ReportsToolbar
+        ledgerEntries={data.ledgerEntries}
+        trialBalanceRows={data.trialBalanceRows}
+      />
+
       <div className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
-        <Card>
-          <CardHeader>
-            <CardTitle>Ledger report</CardTitle>
-            <CardDescription>
-              Account movement for the selected account and date range.
-            </CardDescription>
-          </CardHeader>
-
-          <CardContent>
-            <LedgerReportTable entries={data.ledgerEntries} />
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Trial balance</CardTitle>
-            <CardDescription>
-              Debit and credit totals by account for the selected period.
-            </CardDescription>
-          </CardHeader>
-
-          <CardContent>
-            <TrialBalanceTable rows={data.trialBalanceRows} />
-          </CardContent>
-        </Card>
+        ...
       </div>
     </div>
   );
