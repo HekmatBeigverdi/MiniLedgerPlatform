@@ -174,3 +174,16 @@ Deliverables:
 - Add print-specific styles
 - Add printable report heading
 
+## Phase 18
+Native desktop export with Tauri file system
+
+Deliverables:
+- Add Tauri dialog plugin
+- Add Tauri file system plugin
+- Register desktop export plugins
+- Add export permissions
+- Add native text file export service
+- Add native-aware reports export resolver
+- Preserve browser export in web mode
+- Use native save dialog in desktop mode
+
