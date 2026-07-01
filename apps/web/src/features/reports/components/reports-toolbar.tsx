@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Download, Printer } from "lucide-react";
 
 import type {
@@ -7,9 +8,9 @@ import type {
   TrialBalanceRow,
 } from "@/features/reports/types/report";
 import {
-  exportLedgerReportToCsv,
-  exportTrialBalanceToCsv,
-} from "@/features/reports/services/reports-export";
+  exportLedgerReport,
+  exportTrialBalanceReport,
+} from "@/features/reports/services/reports-export-resolver";
 import { Button } from "@/components/ui/button";
 
 type ReportsToolbarProps = {
@@ -21,8 +22,30 @@ export function ReportsToolbar({
   ledgerEntries,
   trialBalanceRows,
 }: ReportsToolbarProps) {
+  const [isExporting, setIsExporting] = useState(false);
+
   function handlePrint() {
     window.print();
+  }
+
+  async function handleExportLedger() {
+    setIsExporting(true);
+
+    try {
+      await exportLedgerReport(ledgerEntries);
+    } finally {
+      setIsExporting(false);
+    }
+  }
+
+  async function handleExportTrialBalance() {
+    setIsExporting(true);
+
+    try {
+      await exportTrialBalanceReport(trialBalanceRows);
+    } finally {
+      setIsExporting(false);
+    }
   }
 
   return (
@@ -30,8 +53,8 @@ export function ReportsToolbar({
       <Button
         type="button"
         variant="outline"
-        onClick={() => exportLedgerReportToCsv(ledgerEntries)}
-        disabled={ledgerEntries.length === 0}
+        onClick={handleExportLedger}
+        disabled={isExporting || ledgerEntries.length === 0}
       >
         <Download className="mr-2 h-4 w-4" />
         Export ledger CSV
@@ -40,8 +63,8 @@ export function ReportsToolbar({
       <Button
         type="button"
         variant="outline"
-        onClick={() => exportTrialBalanceToCsv(trialBalanceRows)}
-        disabled={trialBalanceRows.length === 0}
+        onClick={handleExportTrialBalance}
+        disabled={isExporting || trialBalanceRows.length === 0}
       >
         <Download className="mr-2 h-4 w-4" />
         Export trial balance CSV
