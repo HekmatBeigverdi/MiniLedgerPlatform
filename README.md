@@ -55,14 +55,14 @@ MiniLedgerPlatform/
 
 ### Current Phase
 
-Phase 17 — Report Export and Print Foundation
+Phase 18 — Native Desktop Export with Tauri File System
 
 The project currently includes:
 
-- CSV export for ledger reports
-- CSV export for trial balance reports
-- Print-friendly reports
-- Report export toolbar
+- Native desktop CSV export
+- Tauri save dialog for report exports
+- Tauri file system write support
+- Web/desktop export resolver
 
 ---
 
@@ -270,6 +270,7 @@ The mock session is stored temporarily in browser local storage.
 | Phase 15 | Desktop vouchers data provider | Completed |
 | Phase 16 | Desktop reports from SQLite | Completed |
 | Phase 17 | Report export and print foundation | Completed |
+| Phase 18 | Native desktop export with Tauri file system | Completed |
 
 Detailed roadmap:
 
