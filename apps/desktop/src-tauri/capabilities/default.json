@@ -7,9 +7,17 @@
     "core:default",
     "core:webview:allow-print",
     "opener:default",
+
     "sql:default",
     "sql:allow-load",
     "sql:allow-execute",
-    "sql:allow-select"
+    "sql:allow-select",
+
+    "dialog:default",
+    "dialog:allow-save",
+
+    "fs:default",
+    "fs:allow-write-file",
+    "fs:allow-write-text-file"
   ]
 }
