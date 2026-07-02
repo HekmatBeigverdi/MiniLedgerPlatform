@@ -37,7 +37,7 @@ export function AccountsTable({ accounts }: AccountsTableProps) {
             <TableHead>Type</TableHead>
             <TableHead>Normal Balance</TableHead>
             <TableHead>Status</TableHead>
-            <TableHead>Created</TableHead>
+            <TableHead className="hidden md:table-cell">Created</TableHead>
             <TableHead className="w-12" />
           </TableRow>
         </TableHeader>
@@ -48,7 +48,7 @@ export function AccountsTable({ accounts }: AccountsTableProps) {
               <TableCell className="font-mono text-sm">
                 {account.code}
               </TableCell>
-              <TableCell>
+              <TableCell className="whitespace-normal">
                 <div>
                   <p className="font-medium">{account.name}</p>
                   {account.description ? (
@@ -65,7 +65,7 @@ export function AccountsTable({ accounts }: AccountsTableProps) {
               <TableCell>
                 <AccountStatusBadge status={account.status} />
               </TableCell>
-              <TableCell className="text-muted-foreground">
+              <TableCell className="hidden text-muted-foreground md:table-cell">
                 {new Intl.DateTimeFormat("en", {
                   year: "numeric",
                   month: "short",
