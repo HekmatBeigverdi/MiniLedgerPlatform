@@ -212,7 +212,7 @@ export function CreateVoucherForm({
                   </Button>
                 </div>
 
-                <div className="grid gap-4 lg:grid-cols-[1.2fr_1.2fr_1fr_1fr]">
+                <div className="grid gap-4 md:grid-cols-[1.2fr_1.2fr_1fr_1fr]">
                   <FormField
                     control={form.control}
                     name={`lines.${index}.accountCode`}
