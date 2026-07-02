@@ -187,3 +187,14 @@ Deliverables:
 - Preserve browser export in web mode
 - Use native save dialog in desktop mode
 
+## Phase 19
+PDF export foundation
+
+Deliverables:
+- Add PDF export dependencies
+- Add PDF table utility
+- Add native binary file export
+- Add ledger report PDF export
+- Add trial balance PDF export
+- Add PDF actions to reports toolbar
+
