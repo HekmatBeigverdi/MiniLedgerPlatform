@@ -11,7 +11,7 @@ export function AppSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden min-h-screen w-72 shrink-0 border-r bg-background lg:block">
+    <aside className="hidden min-h-screen w-72 shrink-0 border-r bg-background md:block">
       <div className="flex h-16 items-center border-b px-6">
         <Link href="/dashboard" className="flex flex-col">
           <span className="text-sm font-semibold tracking-tight">

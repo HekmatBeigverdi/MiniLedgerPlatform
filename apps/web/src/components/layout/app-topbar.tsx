@@ -13,7 +13,7 @@ export function AppTopbar() {
       <div className="flex items-center gap-3">
         <MobileSidebar />
 
-        <div>
+        <div className="md:hidden">
           <p className="text-sm font-medium">MiniLedgerPlatform</p>
           <p className="hidden text-xs text-muted-foreground sm:block">
             Web-first accounting workspace
