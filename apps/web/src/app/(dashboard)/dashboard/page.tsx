@@ -80,7 +80,7 @@ export default function DashboardPage() {
       <div className="space-y-6 p-6">
         <StatCardGrid items={summaryCards} />
 
-        <section className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+        <section className="grid gap-6 md:grid-cols-[1.2fr_0.8fr]">
           <Card>
             <CardHeader>
               <CardTitle>Financial snapshot</CardTitle>
