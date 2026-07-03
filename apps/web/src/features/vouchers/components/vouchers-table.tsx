@@ -33,7 +33,7 @@ export function VouchersTable({ vouchers }: VouchersTableProps) {
           <TableRow>
             <TableHead>Voucher</TableHead>
             <TableHead>Date</TableHead>
-            <TableHead>Reference</TableHead>
+            <TableHead className="hidden md:table-cell">Reference</TableHead>
             <TableHead>Description</TableHead>
             <TableHead>Status</TableHead>
             <TableHead>Total Debit</TableHead>
@@ -57,7 +57,7 @@ export function VouchersTable({ vouchers }: VouchersTableProps) {
                 }).format(new Date(voucher.date))}
               </TableCell>
 
-              <TableCell>
+              <TableCell className="hidden md:table-cell">
                 {voucher.reference ? (
                   <span className="font-mono text-sm">{voucher.reference}</span>
                 ) : (
@@ -65,7 +65,7 @@ export function VouchersTable({ vouchers }: VouchersTableProps) {
                 )}
               </TableCell>
 
-              <TableCell>
+              <TableCell className="whitespace-normal">
                 {voucher.description ? (
                   <span>{voucher.description}</span>
                 ) : (
