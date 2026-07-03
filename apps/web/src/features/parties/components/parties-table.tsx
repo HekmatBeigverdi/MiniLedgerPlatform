@@ -38,7 +38,7 @@ export function PartiesTable({ parties }: PartiesTableProps) {
             <TableHead>Contact</TableHead>
             <TableHead>Opening Balance</TableHead>
             <TableHead>Status</TableHead>
-            <TableHead>Created</TableHead>
+            <TableHead className="hidden md:table-cell">Created</TableHead>
             <TableHead className="w-12" />
           </TableRow>
         </TableHeader>
@@ -48,7 +48,7 @@ export function PartiesTable({ parties }: PartiesTableProps) {
             <TableRow key={party.id}>
               <TableCell className="font-mono text-sm">{party.code}</TableCell>
 
-              <TableCell>
+              <TableCell className="whitespace-normal">
                 <div>
                   <p className="font-medium">{party.displayName}</p>
                   {party.taxId ? (
@@ -63,7 +63,7 @@ export function PartiesTable({ parties }: PartiesTableProps) {
                 <PartyTypeBadge type={party.type} />
               </TableCell>
 
-              <TableCell>
+              <TableCell className="whitespace-normal">
                 <div className="text-sm">
                   {party.email ? <p>{party.email}</p> : null}
                   {party.phone ? (
@@ -86,7 +86,7 @@ export function PartiesTable({ parties }: PartiesTableProps) {
                 <PartyStatusBadge status={party.status} />
               </TableCell>
 
-              <TableCell className="text-muted-foreground">
+              <TableCell className="hidden text-muted-foreground md:table-cell">
                 {new Intl.DateTimeFormat("en", {
                   year: "numeric",
                   month: "short",
