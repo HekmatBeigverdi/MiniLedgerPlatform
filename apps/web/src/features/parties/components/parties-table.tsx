@@ -34,7 +34,7 @@ export function PartiesTable({ parties }: PartiesTableProps) {
           <TableRow>
             <TableHead>Code</TableHead>
             <TableHead>Name</TableHead>
-            <TableHead>Type</TableHead>
+            <TableHead className="hidden md:table-cell">Type</TableHead>
             <TableHead>Contact</TableHead>
             <TableHead>Opening Balance</TableHead>
             <TableHead>Status</TableHead>
@@ -59,7 +59,7 @@ export function PartiesTable({ parties }: PartiesTableProps) {
                 </div>
               </TableCell>
 
-              <TableCell>
+              <TableCell className="hidden md:table-cell">
                 <PartyTypeBadge type={party.type} />
               </TableCell>
 
