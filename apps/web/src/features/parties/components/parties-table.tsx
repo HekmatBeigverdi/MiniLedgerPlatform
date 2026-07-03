@@ -36,7 +36,9 @@ export function PartiesTable({ parties }: PartiesTableProps) {
             <TableHead>Name</TableHead>
             <TableHead className="hidden md:table-cell">Type</TableHead>
             <TableHead>Contact</TableHead>
-            <TableHead>Opening Balance</TableHead>
+            <TableHead className="hidden md:table-cell">
+              Opening Balance
+            </TableHead>
             <TableHead>Status</TableHead>
             <TableHead className="hidden md:table-cell">Created</TableHead>
             <TableHead className="w-12" />
@@ -75,7 +77,7 @@ export function PartiesTable({ parties }: PartiesTableProps) {
                 </div>
               </TableCell>
 
-              <TableCell>
+              <TableCell className="hidden md:table-cell">
                 {new Intl.NumberFormat("en", {
                   style: "currency",
                   currency: "USD",
