@@ -34,7 +34,7 @@ export function AccountsTable({ accounts }: AccountsTableProps) {
           <TableRow>
             <TableHead>Code</TableHead>
             <TableHead>Name</TableHead>
-            <TableHead>Type</TableHead>
+            <TableHead className="hidden md:table-cell">Type</TableHead>
             <TableHead>Normal Balance</TableHead>
             <TableHead>Status</TableHead>
             <TableHead className="hidden md:table-cell">Created</TableHead>
@@ -58,7 +58,7 @@ export function AccountsTable({ accounts }: AccountsTableProps) {
                   ) : null}
                 </div>
               </TableCell>
-              <TableCell>
+              <TableCell className="hidden md:table-cell">
                 <AccountTypeBadge type={account.type} />
               </TableCell>
               <TableCell>{account.normalBalance}</TableCell>
