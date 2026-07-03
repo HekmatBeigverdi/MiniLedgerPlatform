@@ -26,7 +26,7 @@ export function LedgerReportTable({ entries }: LedgerReportTableProps) {
             <TableHead>Date</TableHead>
             <TableHead>Voucher</TableHead>
             <TableHead>Description</TableHead>
-            <TableHead>Party</TableHead>
+            <TableHead className="hidden md:table-cell">Party</TableHead>
             <TableHead>Debit</TableHead>
             <TableHead>Credit</TableHead>
             <TableHead>Running Balance</TableHead>
@@ -48,7 +48,7 @@ export function LedgerReportTable({ entries }: LedgerReportTableProps) {
                 {entry.voucherNumber}
               </TableCell>
 
-              <TableCell>
+              <TableCell className="whitespace-normal">
                 {entry.description ? (
                   entry.description
                 ) : (
@@ -56,7 +56,7 @@ export function LedgerReportTable({ entries }: LedgerReportTableProps) {
                 )}
               </TableCell>
 
-              <TableCell>
+              <TableCell className="hidden md:table-cell">
                 {entry.partyName ? (
                   entry.partyName
                 ) : (
@@ -90,7 +90,12 @@ export function LedgerReportTable({ entries }: LedgerReportTableProps) {
 
         <TableFooter>
           <TableRow>
-            <TableCell colSpan={4}>Total</TableCell>
+            <TableCell colSpan={3} className="table-cell md:hidden">
+              Total
+            </TableCell>
+            <TableCell colSpan={4} className="hidden md:table-cell">
+              Total
+            </TableCell>
             <TableCell>
               {new Intl.NumberFormat("en", {
                 style: "currency",
