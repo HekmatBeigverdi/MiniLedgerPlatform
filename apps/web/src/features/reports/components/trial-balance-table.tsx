@@ -26,7 +26,7 @@ export function TrialBalanceTable({ rows }: TrialBalanceTableProps) {
           <TableRow>
             <TableHead>Account Code</TableHead>
             <TableHead>Account Name</TableHead>
-            <TableHead>Type</TableHead>
+            <TableHead className="hidden md:table-cell">Type</TableHead>
             <TableHead>Debit</TableHead>
             <TableHead>Credit</TableHead>
           </TableRow>
@@ -39,9 +39,11 @@ export function TrialBalanceTable({ rows }: TrialBalanceTableProps) {
                 {row.accountCode}
               </TableCell>
 
-              <TableCell className="font-medium">{row.accountName}</TableCell>
+              <TableCell className="whitespace-normal font-medium">
+                {row.accountName}
+              </TableCell>
 
-              <TableCell className="text-muted-foreground">
+              <TableCell className="hidden text-muted-foreground md:table-cell">
                 {row.accountType}
               </TableCell>
 
@@ -64,7 +66,10 @@ export function TrialBalanceTable({ rows }: TrialBalanceTableProps) {
 
         <TableFooter>
           <TableRow>
-            <TableCell colSpan={3}>
+            <TableCell colSpan={2} className="table-cell md:hidden">
+              {isBalanced ? "Balanced total" : "Unbalanced total"}
+            </TableCell>
+            <TableCell colSpan={3} className="hidden md:table-cell">
               {isBalanced ? "Balanced total" : "Unbalanced total"}
             </TableCell>
             <TableCell>
