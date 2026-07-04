@@ -19,17 +19,21 @@ export function LedgerReportTable({ entries }: LedgerReportTableProps) {
   const totalCredit = entries.reduce((sum, entry) => sum + entry.credit, 0);
 
   return (
-    <div className="min-w-0 rounded-lg border bg-card">
+    <div className="@container min-w-0 rounded-lg border bg-card">
       <Table>
         <TableHeader>
           <TableRow>
             <TableHead>Date</TableHead>
             <TableHead>Voucher</TableHead>
-            <TableHead className="hidden md:table-cell">Description</TableHead>
-            <TableHead className="hidden md:table-cell">Party</TableHead>
+            <TableHead className="hidden @min-[720px]:table-cell">
+              Description
+            </TableHead>
+            <TableHead className="hidden @min-[720px]:table-cell">
+              Party
+            </TableHead>
             <TableHead>Debit</TableHead>
             <TableHead>Credit</TableHead>
-            <TableHead className="hidden md:table-cell">
+            <TableHead className="hidden @min-[720px]:table-cell">
               Running Balance
             </TableHead>
           </TableRow>
@@ -50,7 +54,7 @@ export function LedgerReportTable({ entries }: LedgerReportTableProps) {
                 {entry.voucherNumber}
               </TableCell>
 
-              <TableCell className="hidden whitespace-normal md:table-cell">
+              <TableCell className="hidden whitespace-normal @min-[720px]:table-cell">
                 {entry.description ? (
                   entry.description
                 ) : (
@@ -58,7 +62,7 @@ export function LedgerReportTable({ entries }: LedgerReportTableProps) {
                 )}
               </TableCell>
 
-              <TableCell className="hidden md:table-cell">
+              <TableCell className="hidden @min-[720px]:table-cell">
                 {entry.partyName ? (
                   entry.partyName
                 ) : (
@@ -80,7 +84,7 @@ export function LedgerReportTable({ entries }: LedgerReportTableProps) {
                 }).format(entry.credit)}
               </TableCell>
 
-              <TableCell className="hidden font-medium md:table-cell">
+              <TableCell className="hidden font-medium @min-[720px]:table-cell">
                 {new Intl.NumberFormat("en", {
                   style: "currency",
                   currency: "USD",
@@ -92,10 +96,13 @@ export function LedgerReportTable({ entries }: LedgerReportTableProps) {
 
         <TableFooter>
           <TableRow>
-            <TableCell colSpan={2} className="table-cell md:hidden">
+            <TableCell colSpan={2} className="table-cell @min-[720px]:hidden">
               Total
             </TableCell>
-            <TableCell colSpan={4} className="hidden md:table-cell">
+            <TableCell
+              colSpan={4}
+              className="hidden @min-[720px]:table-cell"
+            >
               Total
             </TableCell>
             <TableCell>
@@ -110,7 +117,7 @@ export function LedgerReportTable({ entries }: LedgerReportTableProps) {
                 currency: "USD",
               }).format(totalCredit)}
             </TableCell>
-            <TableCell className="hidden md:table-cell" />
+            <TableCell className="hidden @min-[720px]:table-cell" />
           </TableRow>
         </TableFooter>
       </Table>

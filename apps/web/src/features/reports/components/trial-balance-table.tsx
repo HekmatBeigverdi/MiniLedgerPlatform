@@ -20,13 +20,15 @@ export function TrialBalanceTable({ rows }: TrialBalanceTableProps) {
   const isBalanced = totalDebit === totalCredit;
 
   return (
-    <div className="min-w-0 rounded-lg border bg-card">
+    <div className="@container min-w-0 rounded-lg border bg-card">
       <Table>
         <TableHeader>
           <TableRow>
             <TableHead>Account Code</TableHead>
             <TableHead>Account Name</TableHead>
-            <TableHead className="hidden md:table-cell">Type</TableHead>
+            <TableHead className="hidden @min-[480px]:table-cell">
+              Type
+            </TableHead>
             <TableHead>Debit</TableHead>
             <TableHead>Credit</TableHead>
           </TableRow>
@@ -43,7 +45,7 @@ export function TrialBalanceTable({ rows }: TrialBalanceTableProps) {
                 {row.accountName}
               </TableCell>
 
-              <TableCell className="hidden text-muted-foreground md:table-cell">
+              <TableCell className="hidden text-muted-foreground @min-[480px]:table-cell">
                 {row.accountType}
               </TableCell>
 
@@ -66,10 +68,13 @@ export function TrialBalanceTable({ rows }: TrialBalanceTableProps) {
 
         <TableFooter>
           <TableRow>
-            <TableCell colSpan={2} className="table-cell md:hidden">
+            <TableCell colSpan={2} className="table-cell @min-[480px]:hidden">
               {isBalanced ? "Balanced total" : "Unbalanced total"}
             </TableCell>
-            <TableCell colSpan={3} className="hidden md:table-cell">
+            <TableCell
+              colSpan={3}
+              className="hidden @min-[480px]:table-cell"
+            >
               {isBalanced ? "Balanced total" : "Unbalanced total"}
             </TableCell>
             <TableCell>
