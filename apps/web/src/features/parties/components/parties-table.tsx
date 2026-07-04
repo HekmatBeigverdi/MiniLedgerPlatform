@@ -35,7 +35,7 @@ export function PartiesTable({ parties }: PartiesTableProps) {
             <TableHead>Code</TableHead>
             <TableHead>Name</TableHead>
             <TableHead className="hidden md:table-cell">Type</TableHead>
-            <TableHead>Contact</TableHead>
+            <TableHead className="hidden md:table-cell">Contact</TableHead>
             <TableHead className="hidden md:table-cell">
               Opening Balance
             </TableHead>
@@ -65,7 +65,7 @@ export function PartiesTable({ parties }: PartiesTableProps) {
                 <PartyTypeBadge type={party.type} />
               </TableCell>
 
-              <TableCell className="whitespace-normal">
+              <TableCell className="hidden whitespace-normal break-words md:table-cell">
                 <div className="text-sm">
                   {party.email ? <p>{party.email}</p> : null}
                   {party.phone ? (
