@@ -13,6 +13,9 @@
 # testing
 /coverage
 
+# playwright visual-check screenshots (scripts/check-page.mjs)
+/.playwright-screenshots/
+
 # next.js
 /.next/
 /out/
