@@ -22,12 +22,22 @@ export function AppTopbar() {
       </div>
 
       <div className="flex items-center gap-2">
-        <Button variant="outline" size="icon" type="button">
+        <Button
+          variant="outline"
+          size="icon"
+          type="button"
+          className="hidden sm:inline-flex"
+        >
           <Search className="h-4 w-4" />
           <span className="sr-only">Search</span>
         </Button>
 
-        <Button variant="outline" size="icon" type="button">
+        <Button
+          variant="outline"
+          size="icon"
+          type="button"
+          className="hidden sm:inline-flex"
+        >
           <Bell className="h-4 w-4" />
           <span className="sr-only">Notifications</span>
         </Button>
