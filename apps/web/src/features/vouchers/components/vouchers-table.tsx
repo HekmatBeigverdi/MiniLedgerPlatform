@@ -32,9 +32,9 @@ export function VouchersTable({ vouchers }: VouchersTableProps) {
         <TableHeader>
           <TableRow>
             <TableHead>Voucher</TableHead>
-            <TableHead>Date</TableHead>
+            <TableHead className="hidden md:table-cell">Date</TableHead>
             <TableHead className="hidden md:table-cell">Reference</TableHead>
-            <TableHead>Description</TableHead>
+            <TableHead className="hidden md:table-cell">Description</TableHead>
             <TableHead>Status</TableHead>
             <TableHead>Total Debit</TableHead>
             <TableHead>Total Credit</TableHead>
@@ -49,7 +49,7 @@ export function VouchersTable({ vouchers }: VouchersTableProps) {
                 {voucher.number}
               </TableCell>
 
-              <TableCell className="text-muted-foreground">
+              <TableCell className="hidden text-muted-foreground md:table-cell">
                 {new Intl.DateTimeFormat("en", {
                   year: "numeric",
                   month: "short",
@@ -65,7 +65,7 @@ export function VouchersTable({ vouchers }: VouchersTableProps) {
                 )}
               </TableCell>
 
-              <TableCell className="whitespace-normal">
+              <TableCell className="hidden whitespace-normal md:table-cell">
                 {voucher.description ? (
                   <span>{voucher.description}</span>
                 ) : (
