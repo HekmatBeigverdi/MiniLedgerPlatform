@@ -20,7 +20,7 @@ export function TrialBalanceTable({ rows }: TrialBalanceTableProps) {
   const isBalanced = totalDebit === totalCredit;
 
   return (
-    <div className="rounded-lg border bg-card">
+    <div className="min-w-0 rounded-lg border bg-card">
       <Table>
         <TableHeader>
           <TableRow>
